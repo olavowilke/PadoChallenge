@@ -1,0 +1,16 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+#inicia o serviço automaticamente quando a máquina é reiniciada
+    restart: always
+    ports:
+ #porta do servidor amtp
+      - 5672:5672
+#porta do servidor web
+      - 15672:15672
+#quando o container for finalizado, os dados serão perdidos, pois não foi especificado um volume
+#    volumes:
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
